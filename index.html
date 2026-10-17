@@ -120,7 +120,7 @@
     .nav{display:flex;align-items:center;justify-content:space-between;height:104px}
     .logo{display:flex;align-items:center;gap:12px}
     .logo img{height:92px;width:auto;object-fit:contain}
-    .menu{display:flex;gap:42px;list-style:none}
+    .menu{display:flex;gap:30px;list-style:none}
     .menu a{font-size:14px;font-weight:500;color:var(--azul);padding:8px 0;position:relative}
     .menu a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--azul);transition:.25s}
     .menu a:hover::after,.menu a.activo::after{width:100%}
@@ -313,7 +313,13 @@
     .faq-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:start}
     .faq-intro{position:sticky;top:130px}
     .faq-intro .btn{margin-top:26px}
-    .faq-lista{display:grid;gap:12px}
+    .faq-lista{display:flex;flex-direction:column;gap:10px}
+    .faq-lista .faq-item{flex-shrink:0}
+    .modal-cuerpo.faq-lista{background:var(--gris-claro)}
+    .txt-corto{display:none}
+    .modal-pie .btn svg{width:20px;height:20px;fill:currentColor}
+    .modal-cuerpo .faq-item summary{color:var(--azul)}
+    .modal-cuerpo .faq-resp p{margin:0}
     .faq-item{background:#fff;border-radius:12px;box-shadow:0 4px 16px rgba(28,63,110,.06);overflow:hidden}
     .faq-item summary{list-style:none;cursor:pointer;padding:20px 60px 20px 24px;font-weight:600;font-size:15.5px;color:var(--azul);position:relative}
     .faq-item summary::-webkit-details-marker{display:none}
@@ -486,7 +492,8 @@
       .visor{padding:50px 10px}
       .modal{padding:10px}
       .modal-cab,.modal-cuerpo,.modal-pie{padding-left:18px;padding-right:18px}
-      .modal-pie .btn{flex:1;justify-content:center}
+      .modal-pie .btn{flex:1;justify-content:center;padding:12px 10px}
+      .txt-largo{display:none}.txt-corto{display:inline}
       .visor-nav{top:auto;bottom:18px;transform:none}
       .trat-grid{grid-template-columns:1fr}
       .pilares{grid-template-columns:repeat(3,1fr);gap:8px}
@@ -529,6 +536,7 @@
         <li><a href="#tratamientos">Tratamientos</a></li>
         <li><a href="#galeria">Galería</a></li>
         <li><a href="#contacto">Contacto</a></li>
+        <li><a href="#preguntas-frecuentes" class="abrir-faq" role="button" aria-haspopup="dialog">Preguntas frecuentes</a></li>
         <li class="redes redes-menu">
           <a href="https://www.instagram.com/drjaimepadilla/" target="_blank" rel="noopener" aria-label="Instagram del Dr. Jaime Padilla"><svg><use href="#ico-ig"/></svg></a>
         <a href="https://www.facebook.com/profile.php?id=61595392774778" target="_blank" rel="noopener" aria-label="Facebook del Dr. Jaime Padilla"><svg><use href="#ico-fb"/></svg></a>
@@ -844,51 +852,6 @@
   </div>
 </section>
 
-<!-- ===== PREGUNTAS FRECUENTES ===== -->
-<section class="seccion alterna" id="preguntas">
-  <div class="contenedor faq-grid">
-    <div class="faq-intro">
-      <p class="eyebrow">Preguntas frecuentes</p>
-      <h2>Resolvemos tus dudas</h2>
-      <p class="intro">Si tu pregunta no está aquí, escríbenos y te respondemos.</p>
-      <a class="btn" href="https://wa.me/573132022720?text=Hola%2C%20quiero%20agendar%20una%20cita" target="_blank" rel="noopener"><svg><use href="#ico-wa"/></svg> Pregúntanos por WhatsApp</a>
-    </div>
-    <div class="faq-lista">
-      <details class="faq-item">
-        <summary>¿Cómo agendo mi cita de valoración?<span class="faq-icono" aria-hidden="true"></span></summary>
-        <div class="faq-resp"><p>Puedes llenar el formulario de esta página y te contactamos en el horario que elijas, o escribirnos directamente por WhatsApp al +57 313 202 2720.</p></div>
-      </details>
-      <details class="faq-item">
-        <summary>¿Cuánto dura un tratamiento de ortodoncia?<span class="faq-icono" aria-hidden="true"></span></summary>
-        <div class="faq-resp"><p>Depende de cada caso: de la posición de los dientes, del tipo de ortodoncia y de la constancia en los controles. En la valoración el doctor te dará un tiempo estimado para tu caso.</p></div>
-      </details>
-      <details class="faq-item">
-        <summary>¿Qué tipos de ortodoncia ofrecen?<span class="faq-icono" aria-hidden="true"></span></summary>
-        <div class="faq-resp"><p>Ortodoncia convencional (brackets metálicos), ortodoncia estética (brackets de apariencia discreta), ortodoncia de autoligado y ortodoncia con alineadores transparentes. En la valoración te recomendamos la opción más adecuada para ti.</p></div>
-      </details>
-      <details class="faq-item">
-        <summary>¿La ortodoncia duele?<span class="faq-icono" aria-hidden="true"></span></summary>
-        <div class="faq-resp"><p>Es normal sentir algo de presión o sensibilidad los primeros días después de instalar los brackets o de cada control. Suele ser pasajera y te daremos recomendaciones para sentirte más cómodo.</p></div>
-      </details>
-      <details class="faq-item">
-        <summary>¿Cada cuánto son los controles?<span class="faq-icono" aria-hidden="true"></span></summary>
-        <div class="faq-resp"><p>Los controles se hacen de forma periódica según tu plan de tratamiento. El doctor te indicará la frecuencia adecuada para tu caso.</p></div>
-      </details>
-      <details class="faq-item">
-        <summary>¿Cuánto cuesta el tratamiento y qué formas de pago tienen?<span class="faq-icono" aria-hidden="true"></span></summary>
-        <div class="faq-resp"><p>El valor depende del tipo de tratamiento y de cada caso, por eso te lo explicamos en la valoración. Escríbenos por WhatsApp y con gusto te informamos sobre costos y formas de pago.</p></div>
-      </details>
-      <details class="faq-item">
-        <summary>¿Dónde están ubicados y cuál es el horario?<span class="faq-icono" aria-hidden="true"></span></summary>
-        <div class="faq-resp"><p>Estamos en el Centro Comercial Plaza de las Américas, Plaza Corazón, cuarto piso, local 4503, en Bogotá. Atendemos de lunes a sábado de 9:00 a.m. a 6:00 p.m.</p></div>
-      </details>
-    </div>
-  </div>
-  <script type="application/ld+json">
-{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Cómo agendo mi cita de valoración?", "acceptedAnswer": {"@type": "Answer", "text": "Puedes llenar el formulario de esta página y te contactamos en el horario que elijas, o escribirnos directamente por WhatsApp al +57 313 202 2720."}}, {"@type": "Question", "name": "¿Cuánto dura un tratamiento de ortodoncia?", "acceptedAnswer": {"@type": "Answer", "text": "Depende de cada caso: de la posición de los dientes, del tipo de ortodoncia y de la constancia en los controles. En la valoración el doctor te dará un tiempo estimado para tu caso."}}, {"@type": "Question", "name": "¿Qué tipos de ortodoncia ofrecen?", "acceptedAnswer": {"@type": "Answer", "text": "Ortodoncia convencional (brackets metálicos), ortodoncia estética (brackets de apariencia discreta), ortodoncia de autoligado y ortodoncia con alineadores transparentes. En la valoración te recomendamos la opción más adecuada para ti."}}, {"@type": "Question", "name": "¿La ortodoncia duele?", "acceptedAnswer": {"@type": "Answer", "text": "Es normal sentir algo de presión o sensibilidad los primeros días después de instalar los brackets o de cada control. Suele ser pasajera y te daremos recomendaciones para sentirte más cómodo."}}, {"@type": "Question", "name": "¿Cada cuánto son los controles?", "acceptedAnswer": {"@type": "Answer", "text": "Los controles se hacen de forma periódica según tu plan de tratamiento. El doctor te indicará la frecuencia adecuada para tu caso."}}, {"@type": "Question", "name": "¿Cuánto cuesta el tratamiento y qué formas de pago tienen?", "acceptedAnswer": {"@type": "Answer", "text": "El valor depende del tipo de tratamiento y de cada caso, por eso te lo explicamos en la valoración. Escríbenos por WhatsApp y con gusto te informamos sobre costos y formas de pago."}}, {"@type": "Question", "name": "¿Dónde están ubicados y cuál es el horario?", "acceptedAnswer": {"@type": "Answer", "text": "Estamos en el Centro Comercial Plaza de las Américas, Plaza Corazón, cuarto piso, local 4503, en Bogotá. Atendemos de lunes a sábado de 9:00 a.m. a 6:00 p.m."}}]}
-  </script>
-</section>
-
 <!-- ===== CAPTACIÓN DE LEADS ===== -->
 <section class="leads" id="contacto">
   <div class="contenedor leads-grid">
@@ -989,6 +952,56 @@
     </div>
   </div>
 </section>
+
+<!-- ===== PREGUNTAS FRECUENTES (ventana emergente) ===== -->
+<div class="modal" id="faqModal" role="dialog" aria-modal="true" aria-labelledby="faqTitulo" aria-hidden="true">
+  <div class="modal-caja">
+    <div class="modal-cab">
+      <div>
+        <p class="eyebrow">Resolvemos tus dudas</p>
+        <h3 id="faqTitulo">Preguntas frecuentes</h3>
+      </div>
+      <button class="modal-x" data-cerrar aria-label="Cerrar">&times;</button>
+    </div>
+    <div class="modal-cuerpo faq-lista">
+      <details class="faq-item">
+        <summary>¿Cómo agendo mi cita de valoración?<span class="faq-icono" aria-hidden="true"></span></summary>
+        <div class="faq-resp"><p>Puedes llenar el formulario de esta página y te contactamos en el horario que elijas, o escribirnos directamente por WhatsApp al +57 313 202 2720.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>¿Cuánto dura un tratamiento de ortodoncia?<span class="faq-icono" aria-hidden="true"></span></summary>
+        <div class="faq-resp"><p>Depende de cada caso: de la posición de los dientes, del tipo de ortodoncia y de la constancia en los controles. En la valoración el doctor te dará un tiempo estimado para tu caso.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>¿Qué tipos de ortodoncia ofrecen?<span class="faq-icono" aria-hidden="true"></span></summary>
+        <div class="faq-resp"><p>Ortodoncia convencional (brackets metálicos), ortodoncia estética (brackets de apariencia discreta), ortodoncia de autoligado y ortodoncia con alineadores transparentes. En la valoración te recomendamos la opción más adecuada para ti.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>¿La ortodoncia duele?<span class="faq-icono" aria-hidden="true"></span></summary>
+        <div class="faq-resp"><p>Es normal sentir algo de presión o sensibilidad los primeros días después de instalar los brackets o de cada control. Suele ser pasajera y te daremos recomendaciones para sentirte más cómodo.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>¿Cada cuánto son los controles?<span class="faq-icono" aria-hidden="true"></span></summary>
+        <div class="faq-resp"><p>Los controles se hacen de forma periódica según tu plan de tratamiento. El doctor te indicará la frecuencia adecuada para tu caso.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>¿Cuánto cuesta el tratamiento y qué formas de pago tienen?<span class="faq-icono" aria-hidden="true"></span></summary>
+        <div class="faq-resp"><p>El valor depende del tipo de tratamiento y de cada caso, por eso te lo explicamos en la valoración. Escríbenos por WhatsApp y con gusto te informamos sobre costos y formas de pago.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>¿Dónde están ubicados y cuál es el horario?<span class="faq-icono" aria-hidden="true"></span></summary>
+        <div class="faq-resp"><p>Estamos en el Centro Comercial Plaza de las Américas, Plaza Corazón, cuarto piso, local 4503, en Bogotá. Atendemos de lunes a sábado de 9:00 a.m. a 6:00 p.m.</p></div>
+      </details>
+    </div>
+    <div class="modal-pie">
+      <button class="btn btn-sec" data-cerrar>Cerrar</button>
+      <a class="btn" href="https://wa.me/573132022720?text=Hola%2C%20tengo%20una%20pregunta" target="_blank" rel="noopener"><svg><use href="#ico-wa"/></svg> <span class="txt-largo">Pregúntanos por WhatsApp</span><span class="txt-corto">WhatsApp</span></a>
+    </div>
+  </div>
+  <script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Cómo agendo mi cita de valoración?", "acceptedAnswer": {"@type": "Answer", "text": "Puedes llenar el formulario de esta página y te contactamos en el horario que elijas, o escribirnos directamente por WhatsApp al +57 313 202 2720."}}, {"@type": "Question", "name": "¿Cuánto dura un tratamiento de ortodoncia?", "acceptedAnswer": {"@type": "Answer", "text": "Depende de cada caso: de la posición de los dientes, del tipo de ortodoncia y de la constancia en los controles. En la valoración el doctor te dará un tiempo estimado para tu caso."}}, {"@type": "Question", "name": "¿Qué tipos de ortodoncia ofrecen?", "acceptedAnswer": {"@type": "Answer", "text": "Ortodoncia convencional (brackets metálicos), ortodoncia estética (brackets de apariencia discreta), ortodoncia de autoligado y ortodoncia con alineadores transparentes. En la valoración te recomendamos la opción más adecuada para ti."}}, {"@type": "Question", "name": "¿La ortodoncia duele?", "acceptedAnswer": {"@type": "Answer", "text": "Es normal sentir algo de presión o sensibilidad los primeros días después de instalar los brackets o de cada control. Suele ser pasajera y te daremos recomendaciones para sentirte más cómodo."}}, {"@type": "Question", "name": "¿Cada cuánto son los controles?", "acceptedAnswer": {"@type": "Answer", "text": "Los controles se hacen de forma periódica según tu plan de tratamiento. El doctor te indicará la frecuencia adecuada para tu caso."}}, {"@type": "Question", "name": "¿Cuánto cuesta el tratamiento y qué formas de pago tienen?", "acceptedAnswer": {"@type": "Answer", "text": "El valor depende del tipo de tratamiento y de cada caso, por eso te lo explicamos en la valoración. Escríbenos por WhatsApp y con gusto te informamos sobre costos y formas de pago."}}, {"@type": "Question", "name": "¿Dónde están ubicados y cuál es el horario?", "acceptedAnswer": {"@type": "Answer", "text": "Estamos en el Centro Comercial Plaza de las Américas, Plaza Corazón, cuarto piso, local 4503, en Bogotá. Atendemos de lunes a sábado de 9:00 a.m. a 6:00 p.m."}}]}
+  </script>
+</div>
 
 <!-- ===== POLÍTICA DE PRIVACIDAD ===== -->
 <div class="modal" id="politica" role="dialog" aria-modal="true" aria-labelledby="politicaTitulo" aria-hidden="true">
@@ -1124,7 +1137,7 @@
 <script>
   document.getElementById('anio').textContent = new Date().getFullYear();
   // Cerrar menú móvil al elegir una opción
-  const enlaces = document.querySelectorAll('.menu a[href^="#"]');
+  const enlaces = document.querySelectorAll('.menu a[href^="#"]:not(.abrir-faq)');
   enlaces.forEach(a => a.addEventListener('click', () => {
     document.getElementById('menu').classList.remove('abierto');
   }));
@@ -1175,6 +1188,33 @@
     if(Math.abs(dx) > 50) mostrar(gIdx + (dx < 0 ? 1 : -1));
     toqueX = null;
   });
+
+  /* ===== PREGUNTAS FRECUENTES (ventana) ===== */
+  const faqModal = document.getElementById('faqModal');
+  let focoFaq = null;
+  function abrirFaq(e){
+    e.preventDefault();
+    focoFaq = document.activeElement;
+    document.getElementById('menu').classList.remove('abierto');
+    faqModal.classList.add('abierto'); faqModal.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+    faqModal.querySelector('.modal-cuerpo').scrollTop = 0;
+    faqModal.querySelector('.modal-x').focus();
+  }
+  function cerrarFaq(){
+    faqModal.classList.remove('abierto'); faqModal.setAttribute('aria-hidden','true');
+    document.body.style.overflow = '';
+    if(focoFaq) focoFaq.focus({preventScroll:true});
+  }
+  document.querySelectorAll('.abrir-faq').forEach(a => a.addEventListener('click', abrirFaq));
+  faqModal.querySelectorAll('[data-cerrar]').forEach(b => b.addEventListener('click', cerrarFaq));
+  faqModal.addEventListener('click', e => { if(e.target === faqModal) cerrarFaq(); });
+  document.addEventListener('keydown', e => { if(e.key === 'Escape' && faqModal.classList.contains('abierto')) cerrarFaq(); });
+  // Solo una pregunta abierta a la vez
+  faqModal.querySelectorAll('.faq-item').forEach(d => d.addEventListener('toggle', () => {
+    if(d.open) faqModal.querySelectorAll('.faq-item[open]').forEach(o => { if(o !== d) o.open = false; });
+  }));
+  if(location.hash === '#preguntas-frecuentes') abrirFaq(new Event('click'));
 
   /* ===== POLÍTICA DE PRIVACIDAD ===== */
   const modal = document.getElementById('politica');
