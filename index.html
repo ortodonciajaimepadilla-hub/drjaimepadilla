@@ -988,22 +988,35 @@
   });
 
   /* ==========================================================
-     DESTINO DE LOS DATOS: Google Sheets + aviso por correo
-     Pega entre las comillas la URL de la "Aplicación web" de
-     Google Apps Script (termina en /exec).
+     DESTINO DE LOS DATOS: Google Forms → Google Sheets
+     (Google envía el aviso por correo de cada respuesta nueva)
      ========================================================== */
-  const URL_GOOGLE_SHEETS = '';
+  const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSeBBiq4dKrElxAObCm2soGLPdBOUn-fQSUWdDNamgJMJPwtIw/formResponse';
+  const CAMPOS_FORM = {
+    nombre:       'entry.1979284835',
+    apellido:     'entry.278367270',
+    documento:    'entry.2113357334',
+    telefono:     'entry.353116427',
+    correo:       'entry.1128841552',
+    horario:      'entry.213069519',
+    servicio:     'entry.1678110694',
+    ciudad:       'entry.2142082125',
+    autorizacion: 'entry.510019907'
+  };
 
   async function enviarLead(datos){
-    if(!URL_GOOGLE_SHEETS){
-      console.warn('Formulario sin conectar: falta pegar la URL de Google Apps Script en URL_GOOGLE_SHEETS.');
-      return true;
+    if(datos.sitio_web) return true; // trampa anti-spam: lo llenan robots, no personas
+    const cuerpo = new URLSearchParams();
+    for(const [campo, entry] of Object.entries(CAMPOS_FORM)){
+      let valor = datos[campo] ?? '';
+      if(campo === 'autorizacion') valor = 'Sí, aceptó la política de datos';
+      cuerpo.append(entry, valor);
     }
-    await fetch(URL_GOOGLE_SHEETS, {
+    await fetch(GOOGLE_FORM_URL, {
       method: 'POST',
       mode: 'no-cors',
       headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-      body: new URLSearchParams(datos)
+      body: cuerpo
     });
     return true;
   }
