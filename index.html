@@ -287,26 +287,14 @@
     .firma{font-family:'Caveat',cursive;font-size:28px;color:var(--azul-medio);line-height:1}
     .cargo-firma{font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gris-texto)}
 
-    /* ===== PROCESO ===== */
-    .pasos{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:40px;counter-reset:paso;position:relative}
-    .pasos::before{content:"";position:absolute;top:58px;left:12%;right:12%;height:2px;background:repeating-linear-gradient(90deg,var(--borde) 0 8px,transparent 8px 14px)}
-    .paso{position:relative;background:#fff;border-radius:14px;padding:26px 22px 24px;text-align:center;box-shadow:0 6px 22px rgba(28,63,110,.07);transition:.25s}
-    .paso:hover{transform:translateY(-4px)}
-    .paso-num{position:absolute;top:14px;left:16px;font-family:'Source Serif 4',serif;font-size:28px;font-weight:700;color:var(--azul-claro);line-height:1}
-    .paso-icono{position:relative;z-index:1;width:64px;height:64px;margin:0 auto 16px;border-radius:50%;background:var(--azul);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 8px #fff}
-    .paso-icono svg{width:28px;height:28px;stroke:#fff;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-    .paso h3{font-family:'Source Serif 4',serif;font-size:19px;font-weight:600;margin-bottom:8px}
-    .paso p{font-size:14px;color:var(--gris-texto);line-height:1.55}
-
     /* ===== RESEÑAS ===== */
-    .resenas{background:linear-gradient(120deg,var(--azul) 0%,var(--azul-medio) 100%);color:#fff;padding:44px 0}
+    .resenas{background:#fff;color:var(--azul);padding:40px 0;border-top:1px solid var(--borde)}
     .resenas-caja{display:flex;align-items:center;gap:28px}
     .estrellas{font-size:30px;letter-spacing:4px;color:#ffc94d;flex-shrink:0}
     .resenas-texto{flex:1}
     .resenas h2{font-family:'Source Serif 4',serif;font-size:clamp(22px,2.2vw,28px);font-weight:600;margin-bottom:4px}
-    .resenas p{color:#d5e2f2;font-size:15px}
-    .btn-resena{background:#fff;color:var(--azul);flex-shrink:0}
-    .btn-resena:hover{background:var(--azul-claro);color:var(--azul)}
+    .resenas p{color:var(--gris-texto);font-size:15px}
+    .btn-resena{flex-shrink:0}
     .btn-resena svg{fill:#f5b400}
 
     /* ===== PREGUNTAS FRECUENTES ===== */
@@ -420,13 +408,29 @@
     .wa-flotante:hover{transform:scale(1.08)}
     .wa-flotante svg{width:32px;height:32px;fill:#fff}
 
+    /* ===== AVISOS FLOTANTES ===== */
+    .avisos{transition:opacity .3s,visibility .3s;position:fixed;right:22px;bottom:94px;z-index:250;display:flex;flex-direction:column;align-items:flex-end;gap:10px;pointer-events:none}
+    .aviso{position:relative;pointer-events:auto;opacity:0;transform:translateY(12px) scale(.96);transition:opacity .4s ease,transform .4s ease;visibility:hidden}
+    .aviso.visible{opacity:1;transform:none;visibility:visible}
+    .aviso a{display:flex;align-items:center;gap:10px;background:#fff;color:var(--azul);font-size:13.5px;line-height:1.3;
+      padding:10px 34px 10px 10px;border-radius:999px;box-shadow:0 6px 22px rgba(20,40,70,.16);border:1px solid var(--borde);max-width:270px;transition:.2s}
+    .aviso a:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(20,40,70,.2)}
+    .aviso strong{font-weight:700}
+    .aviso-ico{flex-shrink:0;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+    .aviso-ico svg{width:16px;height:16px}
+    .aviso-ico-g{background:#fff6dc}.aviso-ico-g svg{fill:#f5b400}
+    .aviso-ico-c{background:var(--azul)}.aviso-ico-c svg{fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+    .aviso-cita a::after{content:"";position:absolute;right:22px;bottom:-6px;width:12px;height:12px;background:#fff;border-right:1px solid var(--borde);border-bottom:1px solid var(--borde);transform:rotate(45deg)}
+    .aviso-x{position:absolute;right:8px;top:50%;transform:translateY(-50%);width:22px;height:22px;border:0;border-radius:50%;background:transparent;
+      color:#8a97a8;font-size:17px;line-height:1;cursor:pointer}
+    .aviso-x:hover{background:var(--gris-claro);color:var(--azul)}
+    @media (prefers-reduced-motion:reduce){.aviso{transition:none}}
+
     /* ===== BARRA FIJA MÓVIL ===== */
     .barra-movil{display:none}
 
     /* ===== RESPONSIVE ===== */
     @media (max-width:1024px){
-      .pasos{grid-template-columns:repeat(2,1fr)}
-      .pasos::before{display:none}
       .trat-grid{grid-template-columns:repeat(2,1fr)}
       .menu{gap:24px}
       .servicios-barra{grid-template-columns:repeat(3,1fr);row-gap:24px}
@@ -477,13 +481,10 @@
       .bm-agendar{background:var(--azul);color:#fff}
       .wa-flotante{display:none}
       body{padding-bottom:70px}
-      .pasos{grid-template-columns:1fr;gap:12px;margin-top:28px}
-      .paso{display:grid;grid-template-columns:52px 1fr;column-gap:16px;text-align:left;padding:18px 18px 18px 16px}
-      .paso-icono{grid-row:span 2;width:52px;height:52px;margin:0;box-shadow:none}
-      .paso-icono svg{width:24px;height:24px}
-      .paso h3{font-size:17px;margin-bottom:4px}
-      .paso p{font-size:13.5px}
-      .paso-num{left:auto;right:16px;top:12px;font-size:24px}
+      .avisos{right:12px;bottom:82px;gap:8px}
+      .aviso a{font-size:12.5px;max-width:240px;padding:8px 32px 8px 8px}
+      .aviso-ico{width:26px;height:26px}
+      .aviso-cita a::after{display:none}
       .faq-item summary{padding:18px 56px 18px 18px;font-size:15px}
       .faq-resp{padding:0 18px 18px}
       .legal-fila{flex-direction:column;text-align:center;padding-right:60px;padding-left:60px}
@@ -759,43 +760,8 @@
   </div>
 </section>
 
-<!-- ===== PROCESO ===== -->
-<section class="seccion alterna" id="proceso">
-  <div class="contenedor">
-    <p class="eyebrow">Tu tratamiento paso a paso</p>
-    <h2>Así es tu proceso con nosotros</h2>
-    <p class="intro">Sabemos que empezar un tratamiento genera preguntas. Por eso te acompañamos de principio a fin.</p>
-    <ol class="pasos">
-      <li class="paso">
-        <span class="paso-num">1</span>
-        <div class="paso-icono"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-5-5"/></svg></div>
-        <h3>Valoración</h3>
-        <p>Te escuchamos, revisamos tu boca y resolvemos tus dudas sobre el tratamiento que necesitas.</p>
-      </li>
-      <li class="paso">
-        <span class="paso-num">2</span>
-        <div class="paso-icono"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 3v2h6V3M9 11h6M9 15h4"/></svg></div>
-        <h3>Diagnóstico y plan</h3>
-        <p>Con los estudios necesarios definimos un plan de tratamiento claro, con tiempos y opciones.</p>
-      </li>
-      <li class="paso">
-        <span class="paso-num">3</span>
-        <div class="paso-icono"><svg viewBox="0 0 24 24"><rect x="2" y="9" width="5" height="6" rx="1"/><rect x="9.5" y="9" width="5" height="6" rx="1"/><rect x="17" y="9" width="5" height="6" rx="1"/><path d="M1 12h22"/></svg></div>
-        <h3>Inicio del tratamiento</h3>
-        <p>Instalamos tu ortodoncia o iniciamos el tratamiento elegido, explicándote cada paso y sus cuidados.</p>
-      </li>
-      <li class="paso">
-        <span class="paso-num">4</span>
-        <div class="paso-icono"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
-        <h3>Controles y resultados</h3>
-        <p>Te acompañamos en controles periódicos hasta lograr la sonrisa que buscas, y te orientamos para mantenerla.</p>
-      </li>
-    </ol>
-  </div>
-</section>
-
 <!-- ===== GALERÍA ===== -->
-<section class="seccion" id="galeria">
+<section class="seccion alterna" id="galeria">
   <div class="contenedor">
     <p class="eyebrow">Galería</p>
     <h2>Nuestro consultorio</h2>
@@ -836,21 +802,6 @@
   <figure><img id="visorImg" alt=""><figcaption id="visorTxt"></figcaption></figure>
   <button class="visor-nav visor-next" aria-label="Siguiente"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
 </div>
-
-<!-- ===== RESEÑAS ===== -->
-<section class="resenas">
-  <div class="contenedor resenas-caja">
-    <div class="estrellas" aria-hidden="true">★★★★★</div>
-    <div class="resenas-texto">
-      <h2>¿Ya eres paciente?</h2>
-      <p>Tu opinión nos ayuda a seguir mejorando y a que más personas conozcan nuestro trabajo.</p>
-    </div>
-    <a class="btn btn-resena" href="https://search.google.com/local/writereview?placeid=ChIJaQd_UgCfP44RYoLFEPsXoHA" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3 6.5 7 .9-5.1 4.8 1.3 7L12 17.8 5.8 21.2l1.3-7L2 9.4l7-.9z"/></svg>
-      Déjanos tu reseña en Google
-    </a>
-  </div>
-</section>
 
 <!-- ===== CAPTACIÓN DE LEADS ===== -->
 <section class="leads" id="contacto">
@@ -1116,6 +1067,21 @@
   </div>
 </section>
 
+<!-- ===== RESEÑAS ===== -->
+<section class="resenas">
+  <div class="contenedor resenas-caja">
+    <div class="estrellas" aria-hidden="true">★★★★★</div>
+    <div class="resenas-texto">
+      <h2>¿Ya eres paciente?</h2>
+      <p>Tu opinión nos ayuda a seguir mejorando y a que más personas conozcan nuestro trabajo.</p>
+    </div>
+    <a class="btn btn-resena" href="https://search.google.com/local/writereview?placeid=ChIJaQd_UgCfP44RYoLFEPsXoHA" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3 6.5 7 .9-5.1 4.8 1.3 7L12 17.8 5.8 21.2l1.3-7L2 9.4l7-.9z"/></svg>
+      Déjanos tu reseña en Google
+    </a>
+  </div>
+</section>
+
 <footer class="legal">
   <div class="contenedor legal-fila">
     <span>© <span id="anio"></span> Dr. Jaime Padilla · Ortodoncia y Odontología · Bogotá D.C.</span>
@@ -1128,6 +1094,24 @@
   <a class="bm-wa" href="https://wa.me/573132022720?text=Hola%2C%20quiero%20agendar%20una%20cita" target="_blank" rel="noopener"><svg><use href="#ico-wa"/></svg> WhatsApp</a>
   <a class="bm-agendar" href="#contacto">Agendar cita</a>
 </nav>
+
+<!-- Avisos flotantes -->
+<div class="avisos" id="avisos" aria-live="polite">
+  <div class="aviso aviso-google" data-aviso="google">
+    <a href="https://search.google.com/local/writereview?placeid=ChIJaQd_UgCfP44RYoLFEPsXoHA" target="_blank" rel="noopener">
+      <span class="aviso-ico aviso-ico-g"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3 6.5 7 .9-5.1 4.8 1.3 7L12 17.8 5.8 21.2l1.3-7L2 9.4l7-.9z"/></svg></span>
+      <span>¿Te atendimos? <strong>Califícanos en Google</strong></span>
+    </a>
+    <button class="aviso-x" aria-label="Cerrar aviso">&times;</button>
+  </div>
+  <div class="aviso aviso-cita" data-aviso="cita">
+    <a href="#contacto">
+      <span class="aviso-ico aviso-ico-c"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span>
+      <span><strong>Asigna tu cita</strong> con nosotros</span>
+    </a>
+    <button class="aviso-x" aria-label="Cerrar aviso">&times;</button>
+  </div>
+</div>
 
 <!-- Botón flotante de WhatsApp -->
 <a class="wa-flotante" href="https://wa.me/573132022720?text=Hola%2C%20quiero%20agendar%20una%20cita" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
@@ -1188,6 +1172,35 @@
     if(Math.abs(dx) > 50) mostrar(gIdx + (dx < 0 ? 1 : -1));
     toqueX = null;
   });
+
+  /* ===== AVISOS FLOTANTES ===== */
+  (function(){
+    const leer = k => { try { return sessionStorage.getItem(k); } catch(e){ return null; } };
+    const guardar = k => { try { sessionStorage.setItem(k,'1'); } catch(e){} };
+    const avisos = document.querySelectorAll('.aviso');
+    avisos.forEach(av => {
+      const clave = 'aviso-cerrado-' + av.dataset.aviso;
+      if(leer(clave)){ av.remove(); return; }
+      av.querySelector('.aviso-x').addEventListener('click', () => { av.classList.remove('visible'); guardar(clave); setTimeout(() => av.remove(), 400); });
+      if(av.dataset.aviso === 'cita') av.querySelector('a').addEventListener('click', () => { av.classList.remove('visible'); guardar(clave); });
+    });
+    const cita = document.querySelector('.aviso-cita'), google = document.querySelector('.aviso-google');
+    setTimeout(() => cita && cita.classList.add('visible'), 4000);
+    setTimeout(() => google && google.classList.add('visible'), 9000);
+    // Ocultar mientras la persona está en el formulario, para no estorbar
+    const zonas = ['#contacto','#ubicacion','.resenas'].map(q => document.querySelector(q)).filter(Boolean);
+    const caja = document.getElementById('avisos');
+    if('IntersectionObserver' in window && zonas.length){
+      const enVista = new Set();
+      const obs = new IntersectionObserver(entradas => {
+        entradas.forEach(e => e.isIntersecting ? enVista.add(e.target) : enVista.delete(e.target));
+        const ocultar = enVista.size > 0;
+        caja.style.opacity = ocultar ? '0' : '';
+        caja.style.visibility = ocultar ? 'hidden' : '';
+      }, {threshold:.15});
+      zonas.forEach(z => obs.observe(z));
+    }
+  })();
 
   /* ===== PREGUNTAS FRECUENTES (ventana) ===== */
   const faqModal = document.getElementById('faqModal');
