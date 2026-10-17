@@ -101,6 +101,7 @@
       --sombra:0 8px 30px rgba(28,63,110,.10);
     }
     *{margin:0;padding:0;box-sizing:border-box}
+    html,body{overflow-x:clip}
     html{scroll-behavior:smooth}
     section[id]{scroll-margin-top:104px}
     body{font-family:'Montserrat',sans-serif;color:var(--azul);background:var(--blanco);line-height:1.5}
@@ -206,6 +207,7 @@
     .leads-texto .btn-cta{display:flex;justify-content:center;width:100%;max-width:560px;margin-top:38px;font-size:17px;font-weight:700;padding:16px 20px;border-radius:8px;background:var(--azul-medio)}
     .leads-texto .btn-cta:hover{background:var(--azul)}
 
+    .ancla-form{display:block;position:relative;top:-120px;visibility:hidden}
     .form-lead{border-left:1px solid var(--borde);padding:10px 0 10px 56px}
     .form-lead h3{font-size:18px;font-weight:700;margin-bottom:6px}
     .form-lead .sub{font-size:13.5px;color:var(--gris-texto);margin-bottom:24px}
@@ -403,7 +405,7 @@
     .creditos strong{color:#dbe5f2;font-weight:600}
 
     /* ===== WHATSAPP FLOTANTE ===== */
-    .wa-flotante{position:fixed;right:22px;bottom:22px;width:58px;height:58px;border-radius:50%;background:#25d366;
+    .wa-flotante{position:fixed;right:22px;bottom:22px;width:58px;height:58px;border-radius:50%;background:#1a9e4b;
       display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(0,0,0,.25);z-index:200;transition:.25s}
     .wa-flotante:hover{transform:scale(1.08)}
     .wa-flotante svg{width:32px;height:32px;fill:#fff}
@@ -439,6 +441,10 @@
     .js-anim .rv.visto{opacity:1;transform:none;clip-path:inset(0 0 0 0)}
     .js-anim .sobre-foto::before{transform:translate(-50%,-50%) scale(.6);opacity:0;transition:transform 1.2s cubic-bezier(.2,.7,.2,1) .2s,opacity 1s .2s}
     .js-anim .sobre-foto.visto-halo::before{transform:translate(-50%,-50%) scale(1);opacity:1}
+    @media (max-width:860px){
+      .js-anim .rv.rv-izq,.js-anim .rv.rv-der{transform:translateY(30px)}
+      .js-anim .rv.visto{transform:none}
+    }
     @media (prefers-reduced-motion:reduce){
       .js-anim .rv,.js-anim .rv.visto{opacity:1 !important;transform:none !important;clip-path:none !important;transition:none !important}
       .js-anim .sobre-foto::before{transform:translate(-50%,-50%);opacity:1;transition:none}
@@ -503,7 +509,7 @@
       .barra-movil{display:grid;grid-template-columns:1fr 1fr;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:300;
         padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,.97);box-shadow:0 -4px 18px rgba(28,63,110,.12)}
       .barra-movil a{display:flex;align-items:center;justify-content:center;gap:8px;height:46px;border-radius:10px;font-weight:700;font-size:15px}
-      .bm-wa{background:#25d366;color:#fff}
+      .bm-wa{background:#1a9e4b;color:#fff}
       .bm-wa svg{width:20px;height:20px;fill:#fff}
       .bm-agendar{background:var(--azul);color:#fff}
       .wa-flotante{display:none}
@@ -739,7 +745,7 @@
         <div class="trat-body">
           <h3>Ortodoncia convencional</h3>
           <p>Brackets metálicos que tienen ligaduras de colores para corregir la posición de los dientes y mejorar la función y estética de tu sonrisa.</p>
-          <a href="#contacto" class="trat-mas" data-servicio="Ortodoncia convencional">Conoce más <span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></a>
+          <a href="#formulario" class="trat-mas" data-servicio="Ortodoncia convencional">Conoce más <span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></a>
         </div>
       </article>
       <article class="trat-card" id="trat-estetica">
@@ -747,7 +753,7 @@
         <div class="trat-body">
           <h3>Ortodoncia estética</h3>
           <p>Brackets de apariencia discreta que combinan la eficacia del tratamiento con una estética más natural.</p>
-          <a href="#contacto" class="trat-mas" data-servicio="Ortodoncia estética">Conoce más <span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></a>
+          <a href="#formulario" class="trat-mas" data-servicio="Ortodoncia estética">Conoce más <span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></a>
         </div>
       </article>
       <article class="trat-card" id="trat-autoligado">
@@ -755,7 +761,7 @@
         <div class="trat-body">
           <h3>Ortodoncia de autoligado</h3>
           <p>Sistema de brackets con mecanismos de cierre propios, sin necesidad de ligaduras elásticas convencionales.</p>
-          <a href="#contacto" class="trat-mas" data-servicio="Ortodoncia de autoligado">Conoce más <span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></a>
+          <a href="#formulario" class="trat-mas" data-servicio="Ortodoncia de autoligado">Conoce más <span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></a>
         </div>
       </article>
       <article class="trat-card" id="trat-alineadores">
@@ -763,7 +769,7 @@
         <div class="trat-body">
           <h3>Ortodoncia con alineadores</h3>
           <p>Alineadores transparentes y removibles que permiten corregir la posición dental de manera discreta.</p>
-          <a href="#contacto" class="trat-mas" data-servicio="Ortodoncia con alineadores">Conoce más <span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></a>
+          <a href="#formulario" class="trat-mas" data-servicio="Ortodoncia con alineadores">Conoce más <span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></a>
         </div>
       </article>
       <article class="trat-card" id="trat-integral">
@@ -771,7 +777,7 @@
         <div class="trat-body">
           <h3>Odontología integral</h3>
           <p>Prevención, diagnóstico y tratamientos para mantener tu salud oral y cuidar tu sonrisa en cada etapa de tu vida.</p>
-          <a href="#contacto" class="trat-mas" data-servicio="Odontología integral">Conoce más <span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></a>
+          <a href="#formulario" class="trat-mas" data-servicio="Odontología integral">Conoce más <span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></a>
         </div>
       </article>
       <article class="trat-card" id="trat-diseno">
@@ -779,7 +785,7 @@
         <div class="trat-body">
           <h3>Diseño de sonrisa</h3>
           <p>Tratamientos estéticos personalizados para mejorar la armonía, forma y apariencia de tu sonrisa.</p>
-          <a href="#contacto" class="trat-mas" data-servicio="Diseño de sonrisa">Conoce más <span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></a>
+          <a href="#formulario" class="trat-mas" data-servicio="Diseño de sonrisa">Conoce más <span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></a>
         </div>
       </article>
     </div>
@@ -841,6 +847,7 @@
     </div>
 
     <div class="form-lead" id="formLead">
+      <span id="formulario" class="ancla-form" aria-hidden="true"></span>
 
       <form id="leadForm" novalidate>
         <div class="campos">
@@ -1118,7 +1125,7 @@
 <!-- Barra fija en celular -->
 <nav class="barra-movil" aria-label="Contacto rápido">
   <a class="bm-wa" href="https://wa.me/573132022720?text=Hola%2C%20quiero%20agendar%20una%20cita" target="_blank" rel="noopener"><svg><use href="#ico-wa"/></svg> WhatsApp</a>
-  <a class="bm-agendar" href="#contacto">Agendar cita</a>
+  <a class="bm-agendar" href="#formulario">Agendar cita</a>
 </nav>
 
 <!-- Avisos flotantes -->
@@ -1131,7 +1138,7 @@
     <button class="aviso-x" aria-label="Cerrar aviso">&times;</button>
   </div>
   <div class="aviso aviso-cita" data-aviso="cita">
-    <a href="#contacto">
+    <a href="#formulario">
       <span class="aviso-ico aviso-ico-c"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span>
       <span><strong>Asigna tu cita</strong> con nosotros</span>
     </a>
@@ -1337,6 +1344,16 @@
     focoPrevio = chk;
     cerrarPolitica();
   });
+
+  /* ===== IR DIRECTO AL FORMULARIO ===== */
+  document.querySelectorAll('a[href="#formulario"]').forEach(a => a.addEventListener('click', e => {
+    e.preventDefault();
+    const destino = document.getElementById('formLead');
+    const cab = document.querySelector('header').offsetHeight;
+    const y = destino.getBoundingClientRect().top + window.scrollY - cab - 12;
+    window.scrollTo({top: y, behavior: 'smooth'});
+    history.replaceState(null, '', '#formulario');
+  }));
 
   /* ===== FORMULARIO DE LEADS ===== */
   document.querySelectorAll('.trat-mas').forEach(a => a.addEventListener('click', () => {
