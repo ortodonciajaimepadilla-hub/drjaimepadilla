@@ -1399,39 +1399,30 @@
     autorizacion: 'entry.510019907'
   };
 
-  // Envía los datos a Google Forms con un formulario oculto (método más compatible).
+  // Envía los datos a Google Forms con el mismo método de un enlace de respuesta (GET + submit).
   function enviarLead(datos){
     if(datos.sitio_web) return Promise.resolve(true); // trampa anti-spam
+    const params = new URLSearchParams();
+    for(const [campo, entry] of Object.entries(CAMPOS_FORM)){
+      params.append(entry, campo === 'autorizacion' ? 'Sí, aceptó la política de datos' : (datos[campo] ?? ''));
+    }
+    params.append('submit', 'Submit');
+    const url = GOOGLE_FORM_URL + '?' + params.toString();
     return new Promise(resolve => {
-      const nombreFrame = 'gf_destino_' + Date.now();
       const iframe = document.createElement('iframe');
-      iframe.name = nombreFrame;
       iframe.style.display = 'none';
-      document.body.appendChild(iframe);
-
-      const f = document.createElement('form');
-      f.action = GOOGLE_FORM_URL;
-      f.method = 'POST';
-      f.target = nombreFrame;
-      f.acceptCharset = 'UTF-8';
-      f.style.display = 'none';
-      const agregar = (n, v) => { const i = document.createElement('input'); i.type = 'hidden'; i.name = n; i.value = v; f.appendChild(i); };
-      for(const [campo, entry] of Object.entries(CAMPOS_FORM)){
-        agregar(entry, campo === 'autorizacion' ? 'Sí, aceptó la política de datos' : (datos[campo] ?? ''));
-      }
-      agregar('fvv', '1');
-      agregar('pageHistory', '0');
-      document.body.appendChild(f);
-
+      iframe.setAttribute('aria-hidden', 'true');
+      iframe.referrerPolicy = 'no-referrer';
       let listo = false;
       const terminar = () => {
         if(listo) return; listo = true;
-        setTimeout(() => { f.remove(); iframe.remove(); }, 1000);
+        setTimeout(() => iframe.remove(), 3000);
         resolve(true);
       };
       iframe.addEventListener('load', terminar);
-      setTimeout(terminar, 4000);
-      f.submit();
+      setTimeout(terminar, 5000);
+      iframe.src = url;
+      document.body.appendChild(iframe);
     });
   }
 
